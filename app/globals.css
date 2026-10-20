@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-forest-900 font-sans text-cream antialiased;
+  background-image:
+    radial-gradient(60rem 40rem at 10% -10%, rgba(79, 154, 59, 0.16), transparent 60%),
+    radial-gradient(50rem 40rem at 100% 10%, rgba(201, 165, 74, 0.1), transparent 60%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(201, 165, 74, 0.4);
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.35em] text-gold;
+  }
+  .display {
+    @apply font-serif font-normal leading-[1.02] tracking-tight text-cream;
+  }
+  .card {
+    @apply rounded-3xl border border-gold/30 bg-forest-800/70 backdrop-blur-sm;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition duration-300;
+  }
+  .btn-gold {
+    @apply bg-gold text-forest-950 hover:bg-gold-soft hover:shadow-[0_0_40px_-8px_rgba(201,165,74,0.8)];
+  }
+  .btn-ghost {
+    @apply border border-gold/40 text-cream hover:border-gold hover:bg-gold/10;
+  }
+  .chip {
+    @apply rounded-full border px-4 py-2 text-sm transition duration-300;
+  }
+}
+
+@keyframes flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.shimmer-line {
+  background: linear-gradient(90deg, transparent, #c9a54a, transparent);
+  background-size: 200% 100%;
+  animation: flow 3s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
